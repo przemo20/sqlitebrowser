@@ -43,8 +43,7 @@ jobs:
           } else {
             New-Item -Path "C:\dev\OpenSSL" -ItemType SymbolicLink -Value "C:\Program Files\OpenSSL"
           }
-          Copy-Item "C:\dev\OpenSSL\lib\libcrypto-3.lib" "C:\dev\OpenSSL\lib\libcrypto.lib"
-          Copy-Item "C:\dev\OpenSSL\lib\libssl-3.lib" "C:\dev\OpenSSL\lib\libssl.lib"
+          move C:\dev\OpenSSL\lib\VC\x64\MD\* "C:\dev\OpenSSL\lib\"
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
