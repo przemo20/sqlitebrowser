@@ -53,14 +53,14 @@ jobs:
           modules: qt5compat
           version: ${{ env.QT_VERSION }}
 
-      - name: Install VS2026
-        run: choco install visualstudio2026community --package-parameters "--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK.19041 --add Microsoft.VisualStudio.Component.VC.Redist.MSM"
+      - name: Install VS2022
+        run: choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK.19041 --add Microsoft.VisualStudio.Component.VC.Redist.MSM"
 
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: ${{ matrix.arch == 'x86' && 'amd64_x86' || matrix.arch == 'x64' && 'amd64'}}
-          vsversion: 2026
+          vsversion: 2022
 
       - name: Build SQLite
         run: |
