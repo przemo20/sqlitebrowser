@@ -19,7 +19,7 @@ jobs:
         os: [windows-2022]
     env:
       GH_TOKEN: ${{ github.token }}
-      OPENSSL_VERSION: 1.1.1.2100
+      OPENSSL_VERSION: 3.6.0
       QT_VERSION: 6.10.1
     steps:
       - name: Checkout
@@ -43,6 +43,8 @@ jobs:
           } else {
             New-Item -Path "C:\dev\OpenSSL" -ItemType SymbolicLink -Value "C:\Program Files\OpenSSL"
           }
+          Copy-Item "C:\dev\OpenSSL\lib\libcrypto-3.lib" "C:\dev\OpenSSL\lib\libcrypto.lib"
+          Copy-Item "C:\dev\OpenSSL\lib\libssl-3.lib" "C:\dev\OpenSSL\lib\libssl.lib"
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
